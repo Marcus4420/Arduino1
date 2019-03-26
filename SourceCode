@@ -1,0 +1,18 @@
+int buzzer=12; //Med denne linje kode erklærer vi, at input analogen til buzzeren er analog 12. 
+int soundSensor=2; //Med denne linje kode erklærer vi, at input analogen til SoundSensoren er analog 2. 
+void setup() { //I setup funktionen erklærer vi nogen standard paramater, som kun skal erklærers engang, derfor i setup.
+  pinMode (buzzer, OUTPUT); //I denne linje siger vi, at buzzeren skal være en mode som er et output, da buzzeren skal give et output
+  pinMode (soundSensor, INPUT); //I denne linje siger vi, at SoundSensoren skal være en mode som er et input, da soundsensoren skal give et input til vores program.
+}//Her slutter setup funktionen
+
+void loop() { //Void loop() vil sige at dette er en funktion som skal gentages over og over igen i en løkke, indtil programmet er slut. Hvad der gentages er koden inde i loop.
+  int SensorData=digitalRead(soundSensor); //Her siger vi at det som sensoren læser, skal laves til en variabel som skal hedde "SensorData" 
+  Serial.print(SensorData); //Her siger vi at programmet skal skrive variablen "SensorData" i konsollen, så vi har mulighed for at aflæse det sammen med Arduinoen
+  if (SensorData > 0) { // Her laver vi et "Hvis" krav. Kravet skal være opfyldt hvis programmet skal kører denne funktion. Vi tester efter lyd som er højere end Sensorens indstillede minimum, derfor: SensorData > 0
+      digitalWrite(buzzer, HIGH); //
+      delay(5000);
+    }
+    else {
+      digitalWrite(buzzer, LOW);
+    }
+}
